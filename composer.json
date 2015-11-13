@@ -1,0 +1,39 @@
+{
+	"name" : "hofff/contao-article-tabs",
+	"description" : "Tabs via Contao articles based on hofff/contao-article extension.",
+	"keywords" : [
+		"module",
+		"content",
+		"article",
+		"contao",
+		"tabs",
+		"bootstrap"
+	],
+	"type" : "contao-module",
+	"license" : "LGPL-3.0+",
+	"authors" : [{
+			"name" : "Oliver Hoff",
+			"email" : "oliver@hofff.com",
+			"homepage" : "http://hofff.com/",
+			"role" : "Developer"
+		}
+	],
+	"support" : {
+		"issues" : "https://github.com/hofff/contao-article/issues",
+		"irc" : "irc://irc.freenode.org/contao.dev",
+		"source" : "https://github.com/hofff/contao-article"
+	},
+	"require" : {
+		"php" : ">=5.3",
+		"contao/core" : "~3.2",
+		"contao-community-alliance/composer-plugin" : "~2.0",
+		"backboneit/contao-mod-article" : "~2.4"
+	},
+	"extra" : {
+		"contao" : {
+			"sources" : {
+				"contao-module" : "system/modules/hofff_article_tabs"
+			}
+		}
+	}
+}

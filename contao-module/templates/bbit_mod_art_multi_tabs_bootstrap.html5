@@ -1,0 +1,44 @@
+<?php
+$articles = array();
+$active = true;
+foreach($this->articles as $article) {
+	$article['cssID'] = deserialize($article['cssID'], true);
+	$article['active'] = $active;
+	$article['html'] = IncludeArticleUtils::generateArticle(
+		$article['id'],
+		$article['nosearch'],
+		$article['container'],
+		$this->column,
+		$article['cssID']
+	);
+	$articles[] = $article;
+	$active = false;
+}
+?>
+<div class="<?php echo $this->class; ?> block"
+    <?php echo $this->cssID; ?>
+    <?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>
+>
+
+  <ul class="nav nav-tabs" role="tablist">
+    <?php foreach($articles as $article): ?>
+      <li role="presentation"<?php if($article['active']) echo ' class="active"'; ?>><a
+          href="#<?php echo $article['cssID'][0]; ?>"
+          aria-controls="<?php echo $article['cssID'][0]; ?>"
+          role="tab" data-toggle="tab"
+        ><?php echo $article['tabs_label']; ?></a></li>
+    <?php endforeach; ?>
+  </ul>
+
+  <div class="tab-content">
+    <?php foreach($articles as $article): ?>
+      <div id="<?php echo $article['cssID'][0]; ?>"
+          class="tab-pane<?php if($article['active']) echo ' active'; ?>"
+          role="tabpanel"
+      >
+        <?php echo $article['html']; ?>
+      </div>
+    <?php endforeach; ?>
+  </div>
+
+</div>
